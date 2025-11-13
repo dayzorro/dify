@@ -85,6 +85,31 @@ class AppRunner:
         image_detail_config: ImagePromptMessageContent.DETAIL | None = None,
     ) -> tuple[list[PromptMessage], list[str] | None]:
         """
+        inputs: Mapping[str, str]的写法可以实现如下效果：
+        inputs = {
+            "user_name": "张三",
+            "age": "25",
+            "location": "北京"
+        }
+        
+        files: Sequence["File"]
+        输入形式 ：
+        - 类型： Sequence["File"] (File类实例的序列/列表)
+        - File类是一个Pydantic模型，包含以下主要属性：
+        - id : 文件ID
+        - tenant_id : 租户ID
+        - type : 文件类型 (FileType枚举: IMAGE, DOCUMENT, AUDIO, VIDEO等)
+        - transfer_method : 文件传输方式 (FileTransferMethod枚举)
+        - remote_url : 远程URL (当transfer_method是REMOTE_URL时)
+        - related_id : 关联ID (当transfer_method是LOCAL_FILE或TOOL_FILE时)
+        - filename : 文件名
+        - extension : 文件扩展名
+        - mime_type : MIME类型
+        - size : 文件大小
+
+        """
+        
+        """
         Organize prompt messages
         :param context:
         :param app_record: app record
